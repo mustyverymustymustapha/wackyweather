@@ -11,10 +11,26 @@ const wackyForecasts = [
   "Talking Cloud Convention"
 ];
 
+const weatherTips = [
+  "Don't forget your umbrella... and your scuba gear!",
+  "Wear sunglasses to protect from the glitter storm",
+  "Bring a fork for the spaghetti snowstorm",
+  "Pack a camera to capture the flying pigs",
+  "Prepare for sudden changes in gravity",
+  "Practice your cloud whispering skills",
+  "Bring earplugs for the thunder karaoke",
+  "Watch out for falling marshmallows",
+  "Dress in layers... of bubble wrap",
+  "Don't forget to bring your sense of humor!"
+];
+
 function generateForecast() {
   const forecastElement = document.getElementById('forecast');
-  const randomIndex = Math.floor(Math.random() * wackyForecasts.length);
-  forecastElement.textContent = `It'll be ${wackyForecasts[randomIndex]} tomorrow!`;
+  const tipElement = document.getElementById('weather-tip');
+  const randomForecastIndex = Math.floor(Math.random() * wackyForecasts.length);
+  const randomTipIndex = Math.floor(Math.random() * weatherTips.length);
+  forecastElement.textContent = `It'll be ${wackyForecasts[randomForecastIndex]} tomorrow!`;
+  tipElement.textContent = `Tip: ${weatherTips[randomTipIndex]}`;
 }
 
 function show5DayForecast() {
@@ -31,7 +47,6 @@ function showMainSection() {
 function generate5DayForecast() {
   const fiveDayForecastElement = document.getElementById('five-day-forecast');
   fiveDayForecastElement.innerHTML = '';
-
   for (let i = 1; i <= 5; i++) {
       const randomIndex = Math.floor(Math.random() * wackyForecasts.length);
       const dayForecast = document.createElement('div');
