@@ -9,8 +9,17 @@
 <body>
     <div id="app">
         <div id="disclaimer">Disclaimer: This is a fake weather app for entertainment purposes only!</div>
-        <div id="forecast">Click the button to see today's wacky weather!</div>
-        <button onclick="generateForecast()">Get Wacky Forecast</button>
+        <div id="main-section">
+            <div id="current-weather">Today's weather is boring. Let's see tomorrow's forecast!</div>
+            <div id="forecast">Click the button to see tomorrow's wacky weather!</div>
+            <button onclick="generateForecast()">Get Wacky Forecast</button>
+            <button onclick="show5DayForecast()">5-Day Forecast</button>
+        </div>
+        <div id="five-day-section" class="hidden">
+            <h2>5-Day Wacky Forecast</h2>
+            <div id="five-day-forecast"></div>
+            <button onclick="showMainSection()">Back to Main</button>
+        </div>
     </div>
 
     <script src="script.js"></script>
