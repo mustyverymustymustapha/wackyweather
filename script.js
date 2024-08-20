@@ -7,10 +7,12 @@ const wackyForecasts = [
   "Marshmallow Meteor Shower",
   "Bubble Gum Blizzard",
   "Disco Ball Sun",
-  "Pizza scented Fog",
+  "Pizza-scented Fog",
   "Talking Cloud Convention"
 ];
 
 function generateForecast() {
   const forecastElement = document.getElementById('forecast');
-  const randomIndex 
+  const randomIndex = Math.floor(Math.random() * wackyForecasts.length);
+  forecastElement.textContent = `Today's Forecast: ${wackyForecasts[randomIndex]}`;
+}
