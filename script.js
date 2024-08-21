@@ -25,26 +25,33 @@ const weatherTips = [
 ];
 
 const backgroundColors = [
-  "#FFD700",  // gold
-  "#FF6347",  // red i think
-  "#00CED1",  // i forgor
-  "#FF69B4",  // pink
-  "#32CD32",  // gren
-  "#9370DB",  // purp
-  "#FF4500",  // orangish red
-  "#1E90FF",  // this was boue
-  "#FF1493",  // pink
-  "#00FA9A"   // this was a green
+   "#FFD700",  // gold
+   "#FF6347",  // red i think
+   "#00CED1",  // i forgor
+   "#FF69B4",  // pink
+   "#32CD32",  // gren
+   "#9370DB",  // purp
+   "#FF4500",  // orangish red
+   "#1E90FF",  // this was boue
+   "#FF1493",  // pink
+   "#00FA9A"   // this was a green
+ ];
+
+const weatherIcons = [
+  "🐱🐶", "💥", "🙃", "🌈🌪️", "🍝❄️",
+  "🍡☄️", "🍬❄️", "🕺☀️", "🍕🌫️", "☁️💬"
 ];
 
 function generateForecast() {
   const forecastElement = document.getElementById('forecast');
   const tipElement = document.getElementById('weather-tip');
-  const randomForecastIndex = Math.floor(Math.random() * wackyForecasts.length);
+  const iconElement = document.getElementById('weather-icon');
+  const randomIndex = Math.floor(Math.random() * wackyForecasts.length);
   const randomTipIndex = Math.floor(Math.random() * weatherTips.length);
-  forecastElement.textContent = `It'll be ${wackyForecasts[randomForecastIndex]} tomorrow!`;
+  forecastElement.textContent = `It'll be ${wackyForecasts[randomIndex]} tomorrow!`;
   tipElement.textContent = `Tip: ${weatherTips[randomTipIndex]}`;
-  changeBackgroundColor(randomForecastIndex);
+  iconElement.textContent = weatherIcons[randomIndex];
+  changeBackgroundColor(randomIndex);
 }
 
 function changeBackgroundColor(index) {
@@ -70,6 +77,7 @@ function generate5DayForecast() {
       const dayForecast = document.createElement('div');
       dayForecast.classList.add('day-forecast');
       dayForecast.innerHTML = `
+          <div class="day-forecast-icon">${weatherIcons[randomIndex]}</div>
           <h3>Day ${i}</h3>
           <p>It'll be ${wackyForecasts[randomIndex]}</p>
       `;
