@@ -25,16 +25,9 @@ const weatherTips = [
 ];
 
 const backgroundColors = [
-   "#FFD700",  // gold
-   "#FF6347",  // red i think
-   "#00CED1",  // i forgor
-   "#FF69B4",  // pink
-   "#32CD32",  // gren
-   "#9370DB",  // purp
-   "#FF4500",  // orangish red
-   "#1E90FF",  // this was boue
-   "#FF1493",  // pink
-   "#00FA9A"   // this was a green
+  "#FFD700", "#FF6347", "#00CED1", "#FF69B4", "#32CD32",
+  "#9370DB", "#FF4500", "#1E90FF", "#FF1493", "#00FA9A"
+];
 
 const weatherIcons = [
   "🐱🐶", "💥", "🙃", "🌈🌪️", "🍝❄️",
@@ -83,12 +76,20 @@ function playWeatherSound(index) {
 function show5DayForecast() {
   document.getElementById('main-section').classList.add('hidden');
   document.getElementById('five-day-section').classList.remove('hidden');
+  document.getElementById('custom-forecast-section').classList.add('hidden');
   generate5DayForecast();
 }
 
 function showMainSection() {
   document.getElementById('five-day-section').classList.add('hidden');
   document.getElementById('main-section').classList.remove('hidden');
+  document.getElementById('custom-forecast-section').classList.add('hidden');
+}
+
+function showCustomForecastForm() {
+  document.getElementById('main-section').classList.add('hidden');
+  document.getElementById('five-day-section').classList.add('hidden');
+  document.getElementById('custom-forecast-section').classList.remove('hidden');
 }
 
 function generate5DayForecast() {
@@ -107,3 +108,20 @@ function generate5DayForecast() {
       fiveDayForecastElement.appendChild(dayForecast);
   }
 }
+
+document.getElementById('custom-forecast-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const customForecast = document.getElementById('custom-forecast').value;
+  const customTip = document.getElementById('custom-tip').value;
+  const customIcon = document.getElementById('custom-icon').value;
+  const customColor = document.getElementById('custom-color').value;
+
+  wackyForecasts.push(customForecast);
+  weatherTips.push(customTip);
+  weatherIcons.push(customIcon);
+  backgroundColors.push(customColor);
+  weatherSounds.push("custom.mp3");
+
+  alert("Custom forecast added successfully!");
+  showMainSection();
+});
