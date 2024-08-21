@@ -83,6 +83,12 @@ button:hover {
   font-size: 36px;
   margin-bottom: 10px;
 }
+#sound-controls {
+  margin-top: 20px;
+}
+#sound-controls label {
+  margin-right: 10px;
+}
 @media (max-width: 768px) {
   .day-forecast {
       width: calc(50% - 20px);

@@ -35,11 +35,23 @@ const backgroundColors = [
    "#1E90FF",  // this was boue
    "#FF1493",  // pink
    "#00FA9A"   // this was a green
- ];
 
 const weatherIcons = [
   "🐱🐶", "💥", "🙃", "🌈🌪️", "🍝❄️",
   "🍡☄️", "🍬❄️", "🕺☀️", "🍕🌫️", "☁️💬"
+];
+
+const weatherSounds = [
+  "meow-woof.mp3",
+  "explosion.mp3",
+  "boing.mp3",
+  "tornado.mp3",
+  "slurp.mp3",
+  "pop.mp3",
+  "bubble-pop.mp3",
+  "disco.mp3",
+  "sizzle.mp3",
+  "chatter.mp3"
 ];
 
 function generateForecast() {
@@ -52,10 +64,20 @@ function generateForecast() {
   tipElement.textContent = `Tip: ${weatherTips[randomTipIndex]}`;
   iconElement.textContent = weatherIcons[randomIndex];
   changeBackgroundColor(randomIndex);
+  playWeatherSound(randomIndex);
 }
 
 function changeBackgroundColor(index) {
   document.body.style.backgroundColor = backgroundColors[index];
+}
+
+function playWeatherSound(index) {
+  const soundToggle = document.getElementById('sound-toggle');
+  const audio = document.getElementById('weather-sound');
+  if (soundToggle.checked) {
+      audio.src = weatherSounds[index];
+      audio.play();
+  }
 }
 
 function show5DayForecast() {
