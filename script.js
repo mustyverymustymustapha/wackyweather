@@ -24,6 +24,19 @@ const weatherTips = [
   "Don't forget to bring your sense of humor!"
 ];
 
+const backgroundColors = [
+  "#FFD700",  // gold
+  "#FF6347",  // red i think
+  "#00CED1",  // i forgor
+  "#FF69B4",  // pink
+  "#32CD32",  // gren
+  "#9370DB",  // purp
+  "#FF4500",  // orangish red
+  "#1E90FF",  // this was boue
+  "#FF1493",  // pink
+  "#00FA9A"   // this was a green
+];
+
 function generateForecast() {
   const forecastElement = document.getElementById('forecast');
   const tipElement = document.getElementById('weather-tip');
@@ -31,6 +44,11 @@ function generateForecast() {
   const randomTipIndex = Math.floor(Math.random() * weatherTips.length);
   forecastElement.textContent = `It'll be ${wackyForecasts[randomForecastIndex]} tomorrow!`;
   tipElement.textContent = `Tip: ${weatherTips[randomTipIndex]}`;
+  changeBackgroundColor(randomForecastIndex);
+}
+
+function changeBackgroundColor(index) {
+  document.body.style.backgroundColor = backgroundColors[index];
 }
 
 function show5DayForecast() {
@@ -55,6 +73,7 @@ function generate5DayForecast() {
           <h3>Day ${i}</h3>
           <p>It'll be ${wackyForecasts[randomIndex]}</p>
       `;
+      dayForecast.style.backgroundColor = backgroundColors[randomIndex];
       fiveDayForecastElement.appendChild(dayForecast);
   }
 }
