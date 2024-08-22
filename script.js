@@ -48,6 +48,7 @@ const weatherSounds = [
 ];
 
 let currentForecastIndex = -1;
+let favorites = [];
 
 function generateForecast() {
   const forecastElement = document.getElementById('forecast');
@@ -79,6 +80,7 @@ function show5DayForecast() {
   document.getElementById('main-section').classList.add('hidden');
   document.getElementById('five-day-section').classList.remove('hidden');
   document.getElementById('custom-forecast-section').classList.add('hidden');
+  document.getElementById('favorites-section').classList.add('hidden');
   generate5DayForecast();
 }
 
@@ -86,12 +88,14 @@ function showMainSection() {
   document.getElementById('five-day-section').classList.add('hidden');
   document.getElementById('main-section').classList.remove('hidden');
   document.getElementById('custom-forecast-section').classList.add('hidden');
+  document.getElementById('favorites-section').classList.add('hidden');
 }
 
 function showCustomForecastForm() {
   document.getElementById('main-section').classList.add('hidden');
   document.getElementById('five-day-section').classList.add('hidden');
   document.getElementById('custom-forecast-section').classList.remove('hidden');
+  document.getElementById('favorites-section').classList.add('hidden');
 }
 
 function generate5DayForecast() {
@@ -158,3 +162,56 @@ function shareOnPlatform(platform) {
 
   window.open(shareUrl, '_blank');
 }
+
+function saveFavorite() {
+  if (currentForecastIndex === -1) {
+      alert("Please generate a forecast first!");
+      return;
+  }
+
+  const favorite = {
+      forecast: wackyForecasts[currentForecastIndex],
+      tip: document.getElementById('weather-tip').textContent,
+      icon: weatherIcons[currentForecastIndex],
+      color: backgroundColors[currentForecastIndex]
+  };
+
+  favorites.push(favorite);
+  localStorage.setItem('favorites', JSON.stringify(favorites));
+  alert("Forecast saved to favorites!");
+}
+
+function showFavorites() {
+  document.getElementById('main-section').classList.add('hidden');
+  document.getElementById('five-day-section').classList.add('hidden');
+  document.getElementById('custom-forecast-section').classList.add('hidden');
+  document.getElementById('favorites-section').classList.remove('hidden');
+
+  const favoritesList = document.getElementById('favorites-list');
+  favoritesList.innerHTML = '';
+
+  favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+  favorites.forEach((favorite, index) => {
+      const favoriteItem = document.createElement('div');
+      favoriteItem.classList.add('favorite-item');
+      favoriteItem.style.backgroundColor = favorite.color;
+      favoriteItem.innerHTML = `
+          <div class="favorite-icon">${favorite.icon}</div>
+          <p>${favorite.forecast}</p>
+          <p>${favorite.tip}</p>
+          <button onclick="removeFavorite(${index})">Remove</button>
+      `;
+      favoritesList.appendChild(favoriteItem);
+  });
+}
+
+function removeFavorite(index) {
+  favorites.splice(index, 1);
+  localStorage.setItem('favorites', JSON.stringify(favorites));
+  showFavorites();
+}
+
+window.onload = function() {
+  favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+};

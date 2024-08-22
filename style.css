@@ -117,13 +117,31 @@ button:hover {
 #share-options button:nth-child(3) {
   background-color: #25D366;
 }
+#favorites-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+.favorite-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  width: calc(33.33% - 20px);
+  box-sizing: border-box;
+}
+.favorite-icon {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
 @media (max-width: 768px) {
-  .day-forecast {
+  .day-forecast, .favorite-item {
       width: calc(50% - 20px);
   }
 }
 @media (max-width: 480px) {
-  .day-forecast {
+  .day-forecast, .favorite-item {
       width: calc(100% - 20px);
   }
 }

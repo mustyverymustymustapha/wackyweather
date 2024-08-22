@@ -19,6 +19,8 @@
             <button onclick="generateForecast()">Get Wacky Forecast</button>
             <button onclick="show5DayForecast()">5-Day Forecast</button>
             <button onclick="showCustomForecastForm()">Create Custom Forecast</button>
+            <button onclick="saveFavorite()">Save Favorite</button>
+            <button onclick="showFavorites()">View Favorites</button>
             <div id="sound-controls">
                 <label for="sound-toggle">Sound Effects:</label>
                 <input type="checkbox" id="sound-toggle" checked>
@@ -46,6 +48,11 @@
                 <input type="color" id="custom-color" value="#FFD700">
                 <button type="submit">Save Custom Forecast</button>
             </form>
+            <button onclick="showMainSection()">Back to Main</button>
+        </div>
+        <div id="favorites-section" class="hidden">
+            <h2>Favorite Forecasts</h2>
+            <div id="favorites-list"></div>
             <button onclick="showMainSection()">Back to Main</button>
         </div>
     </div>
