@@ -21,6 +21,7 @@
             <button onclick="showCustomForecastForm()">Create Custom Forecast</button>
             <button onclick="saveFavorite()">Save Favorite</button>
             <button onclick="showFavorites()">View Favorites</button>
+            <button onclick="showWeatherChallenges()">Weather Challenges</button>
             <div id="sound-controls">
                 <label for="sound-toggle">Sound Effects:</label>
                 <input type="checkbox" id="sound-toggle" checked>
@@ -53,6 +54,12 @@
         <div id="favorites-section" class="hidden">
             <h2>Favorite Forecasts</h2>
             <div id="favorites-list"></div>
+            <button onclick="showMainSection()">Back to Main</button>
+        </div>
+        <div id="weather-challenges-section" class="hidden">
+            <h2>Weather Challenges</h2>
+            <div id="challenges-list"></div>
+            <button onclick="createChallenge()">Create New Challenge</button>
             <button onclick="showMainSection()">Back to Main</button>
         </div>
     </div>
