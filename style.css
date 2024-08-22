@@ -101,6 +101,22 @@ button:hover {
   width: 80%;
   max-width: 300px;
 }
+#share-section {
+  margin-top: 20px;
+}
+#share-options {
+  margin-top: 10px;
+}
+#share-options button {
+  background-color: #3b5998;
+  margin: 0 5px;
+}
+#share-options button:nth-child(1) {
+  background-color: #1DA1F2;
+}
+#share-options button:nth-child(3) {
+  background-color: #25D366;
+}
 @media (max-width: 768px) {
   .day-forecast {
       width: calc(50% - 20px);

@@ -47,17 +47,19 @@ const weatherSounds = [
   "chatter.mp3"
 ];
 
+let currentForecastIndex = -1;
+
 function generateForecast() {
   const forecastElement = document.getElementById('forecast');
   const tipElement = document.getElementById('weather-tip');
   const iconElement = document.getElementById('weather-icon');
-  const randomIndex = Math.floor(Math.random() * wackyForecasts.length);
+  currentForecastIndex = Math.floor(Math.random() * wackyForecasts.length);
   const randomTipIndex = Math.floor(Math.random() * weatherTips.length);
-  forecastElement.textContent = `It'll be ${wackyForecasts[randomIndex]} tomorrow!`;
+  forecastElement.textContent = `It'll be ${wackyForecasts[currentForecastIndex]} tomorrow!`;
   tipElement.textContent = `Tip: ${weatherTips[randomTipIndex]}`;
-  iconElement.textContent = weatherIcons[randomIndex];
-  changeBackgroundColor(randomIndex);
-  playWeatherSound(randomIndex);
+  iconElement.textContent = weatherIcons[currentForecastIndex];
+  changeBackgroundColor(currentForecastIndex);
+  playWeatherSound(currentForecastIndex);
 }
 
 function changeBackgroundColor(index) {
@@ -125,3 +127,34 @@ document.getElementById('custom-forecast-form').addEventListener('submit', funct
   alert("Custom forecast added successfully!");
   showMainSection();
 });
+
+function shareForecast() {
+  const shareOptions = document.getElementById('share-options');
+  shareOptions.classList.toggle('hidden');
+}
+
+function shareOnPlatform(platform) {
+  if (currentForecastIndex === -1) {
+      alert("Please generate a forecast first!");
+      return;
+  }
+
+  const forecast = wackyForecasts[currentForecastIndex];
+  const tip = document.getElementById('weather-tip').textContent;
+  const shareText = `Check out this wacky weather forecast: ${forecast} ${tip}`;
+  let shareUrl = '';
+
+  switch (platform) {
+      case 'twitter':
+          shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`;
+          break;
+      case 'facebook':
+          shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=${encodeURIComponent(shareText)}`;
+          break;
+      case 'whatsapp':
+          shareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
+          break;
+  }
+
+  window.open(shareUrl, '_blank');
+}

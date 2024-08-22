@@ -23,6 +23,14 @@
                 <label for="sound-toggle">Sound Effects:</label>
                 <input type="checkbox" id="sound-toggle" checked>
             </div>
+            <div id="share-section">
+                <button onclick="shareForecast()">Share Forecast</button>
+                <div id="share-options" class="hidden">
+                    <button onclick="shareOnPlatform('twitter')">Twitter</button>
+                    <button onclick="shareOnPlatform('facebook')">Facebook</button>
+                    <button onclick="shareOnPlatform('whatsapp')">WhatsApp</button>
+                </div>
+            </div>
         </div>
         <div id="five-day-section" class="hidden">
             <h2>5-Day Wacky Forecast</h2>
