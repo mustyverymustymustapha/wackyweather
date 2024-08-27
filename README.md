@@ -1,3 +1,4 @@
+![6D9D33FB-1485-401D-BD58-4A152A840ECD](https://github.com/user-attachments/assets/6b06ef28-bec4-4ca8-ac56-de6d4c304934)
 # 🌪️ My wacky weather app 🌈
 wassup! this is a wacky fake weather app for my fellow weather enjoyers.
 ## have you ever been bored of the weather? (this is targeted at you, uk citizens)
